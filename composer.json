@@ -22,6 +22,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
+        "phpbench/phpbench": "^0.15.0",
         "phpstan/phpstan": "^0.11.2",
         "phpstan/phpstan-phpunit": "^0.11.0",
         "phpstan/phpstan-strict-rules": "^0.11.0",
@@ -34,10 +35,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpAi\\Tests\\": "tests/"
+            "PhpAi\\Tests\\": "tests/",
+            "PhpAi\\Benchmarks\\": "benchmarks/"
         }
     },
     "scripts": {
+        "bench-memory": "./vendor/bin/phpbench run --report=memory --retry-threshold=2",
+        "bench-time": "./vendor/bin/phpbench run --report=time --retry-threshold=2",
         "build": [
             "@check-cs",
             "@phpstan",
